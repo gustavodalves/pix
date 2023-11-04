@@ -2,7 +2,7 @@ export default class Code {
     readonly value: string
 
     constructor(value: string) {
-        if(this.validate(value)) throw new Error("bank code not valid")
+        if(!this.validate(value)) throw new Error("bank code not valid")
         this.value = value
     }
 
