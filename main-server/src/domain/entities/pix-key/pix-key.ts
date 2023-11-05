@@ -1,30 +1,30 @@
-import Entity from "../../../../building-blocks/entity";
-import UUID from "../../../../building-blocks/value-objects/uuid";
+import Entity from "../../../building-blocks/entity";
+import UUID from "../../../building-blocks/value-objects/uuid";
 
 class PixKeyId extends UUID {}
 
 export enum PixKeyStatus {
-    "inactive",
-    "active",
+    Inactive = "inactive",
+    Active = "active",
 }
 
 export enum PixKeyKind {
-    "taxId",
-    "email",
-    "random"
+    TaxId = "taxId",
+    Email = "email",
+    Random = "random"
 }
 
 export type CreatePixKey = {
     key: string,
-    kind: string,
-    status: string
+    kind: PixKeyKind,
+    status: PixKeyStatus
 }
 
 export type RecoverPixKey = {
     id: string,
     key: string,
-    kind: string,
-    status: string,
+    kind: PixKeyKind,
+    status: PixKeyStatus
     createdAt: Date
 }
 
@@ -32,8 +32,8 @@ export default class PixKey extends Entity {
     private constructor(
         id: PixKeyId,
         readonly key: string,
-        readonly kind: string,
-        private status: string,
+        readonly kind: PixKeyKind,
+        private status: PixKeyStatus,
         createdAt: Date
     ) {
         super(id, createdAt)
@@ -49,5 +49,9 @@ export default class PixKey extends Entity {
             input.status,
             new Date(),
         )
+    }
+
+    inactive() {
+        this.status = PixKeyStatus.Inactive
     }
 }

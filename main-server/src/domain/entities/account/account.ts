@@ -3,7 +3,7 @@ import Entity from "../../../building-blocks/entity";
 import UUID from "../../../building-blocks/value-objects/uuid";
 import Bank from "../bank/bank";
 import AccountNumber from "./number";
-import PixKey from "./pix-key/pix-key";
+import PixKey, { PixKeyKind, PixKeyStatus } from "../pix-key/pix-key";
 
 class AccountId extends UUID {}
 
@@ -59,7 +59,7 @@ export default class Account extends AggregateRoot {
         )
     }
 
-    registerPixKey(key: string, kind: string, status: string) {
+    registerPixKey(key: string, kind: PixKeyKind, status: PixKeyStatus) {
         const pixKey = PixKey.create(
             {
                 key, kind , status
