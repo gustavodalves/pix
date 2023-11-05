@@ -2,7 +2,7 @@ export default class AccountNumber {
     readonly value: string
 
     constructor(value: string) {
-        if(this.validate(value)) throw new Error("account number not valid")
+        if(!this.validate(value)) throw new Error("account number not valid")
         this.value = value
     }
 

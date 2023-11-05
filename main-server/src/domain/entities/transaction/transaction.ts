@@ -2,7 +2,7 @@ import Entity from "../../../building-blocks/entity";
 import UUID from "../../../building-blocks/value-objects/uuid";
 import Account from "../account/account";
 import PixKey from "../pix-key/pix-key";
-import Amount from "./Amount";
+import Amount from "./amount";
 
 export enum TransactionStatus {
     TransactionPending   = "pending",
